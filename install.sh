@@ -21,8 +21,8 @@ echo -e "${BLUE}║${NC}     Claude Project Starter - Installer              ${B
 echo -e "${BLUE}╚══════════════════════════════════════════════════════════╝${NC}"
 echo
 
-# Check if claude-code is installed
-if ! command -v claude-code >/dev/null 2>&1; then
+# Check if claude is installed
+if ! command -v claude >/dev/null 2>&1; then
     echo -e "${RED}✗ Claude Code is not installed${NC}"
     echo
     echo "Please install Claude Code first:"
