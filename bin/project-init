@@ -1,0 +1,190 @@
+#!/usr/bin/env bash
+# Claude Project Starter - Main initialization script
+# Smart project initialization for Claude Code
+
+set -e
+
+# Colors
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+DIM='\033[2m'
+NC='\033[0m' # No Color
+
+# Paths
+CONFIG_DIR="${HOME}/.config/claude-code"
+MASTER_TEMPLATE="$CONFIG_DIR/claude-code-project-setup-master.md"
+CURRENT_DIR="$(pwd)"
+
+# Check if Claude Code is installed
+if ! command -v claude-code >/dev/null 2>&1; then
+    echo -e "${RED}✗ Claude Code is not installed${NC}"
+    echo "  Install from: https://claude.com/claude-code"
+    exit 1
+fi
+
+# Banner
+echo -e "${BLUE}╔══════════════════════════════════════════════════════════╗${NC}"
+echo -e "${BLUE}║${NC}          Claude Project Starter                      ${BLUE}║${NC}"
+echo -e "${BLUE}╚══════════════════════════════════════════════════════════╝${NC}"
+echo
+echo -e "${DIM}Current directory: $CURRENT_DIR${NC}"
+echo
+
+# Check if master template exists
+if [ ! -f "$MASTER_TEMPLATE" ]; then
+    echo -e "${YELLOW}⚠${NC} Master template not found"
+    echo
+    echo "The master template guides Claude on how to set up projects."
+    echo "Location: $MASTER_TEMPLATE"
+    echo
+    echo "This file should have been installed. Let's create it now."
+    echo
+    read -p "Create master template? (yes/no): " -r
+    echo
+
+    if [[ ! $REPLY =~ ^[Yy]es$ ]]; then
+        echo "Cannot proceed without master template."
+        echo "Please run the installer or create the template manually."
+        exit 1
+    fi
+
+    # Create config directory if needed
+    mkdir -p "$CONFIG_DIR"
+
+    # Create a basic template
+    cat > "$MASTER_TEMPLATE" << 'EOF'
+# Claude Code Project Setup - Master Guide
+
+This guide tells Claude how to set up new projects interactively.
+
+## When user says "Start a new project":
+
+1. Welcome the user
+2. Ask project questions:
+   - Project name
+   - Description
+   - Type (CLI, Web, Data, etc.)
+   - Technologies
+   - GitHub info
+   - Maintainer
+3. Create project structure
+4. Initialize git
+5. Create .project/PROJECT.md with context
+
+## Git Commit Guidelines
+
+**DO NOT include AI attribution in commits:**
+- No "Co-Authored-By: Claude"
+- No AI tool references
+- All commits attributed to project owner only
+
+Keep git history clean and professional.
+EOF
+
+    echo -e "${GREEN}✓${NC} Created basic master template at $MASTER_TEMPLATE"
+    echo -e "${DIM}  You can customize this later!${NC}"
+    echo
+fi
+
+# Detect project state
+file_count=$(find . -maxdepth 1 -type f ! -name '.*' | wc -l)
+dir_count=$(find . -maxdepth 1 -type d ! -name '.' ! -name '..' ! -name '.*' | wc -l)
+has_project_md=false
+
+if [ -f ".project/PROJECT.md" ]; then
+    has_project_md=true
+fi
+
+# Decision tree
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo
+
+if [ $file_count -eq 0 ] && [ $dir_count -eq 0 ]; then
+    # Empty directory - new project
+    echo -e "${BLUE}📁 Empty Directory Detected${NC}"
+    echo
+    echo "This looks like a new project!"
+    echo
+    read -p "Start a new project here? (yes/no): " -r
+    echo
+
+    if [[ $REPLY =~ ^[Yy]es$ ]]; then
+        echo "Launching Claude Code to set up your project..."
+        echo
+        echo -e "${DIM}Tell Claude: 'Read $MASTER_TEMPLATE then start a new project'${NC}"
+        echo
+        sleep 2
+        claude-code "Read $MASTER_TEMPLATE then start a new project"
+    else
+        echo "Cancelled."
+        exit 0
+    fi
+
+elif [ "$has_project_md" = true ]; then
+    # Has PROJECT.md - existing project
+    echo -e "${GREEN}✓ Existing Project Detected${NC}"
+    echo
+    echo "Found .project/PROJECT.md - this project is already set up!"
+    echo
+    echo "What would you like to work on?"
+    echo
+    read -p "Describe your task (or press Enter to chat): " task
+    echo
+
+    if [ -n "$task" ]; then
+        echo "Launching Claude Code with project context..."
+        echo
+        sleep 1
+        claude-code "Read .project/PROJECT.md and understand the project context. Then: $task"
+    else
+        echo "Launching Claude Code with project context..."
+        echo
+        sleep 1
+        claude-code "Read .project/PROJECT.md and understand the project context. I'm ready to work on this project."
+    fi
+
+else
+    # Has files but no PROJECT.md
+    echo -e "${YELLOW}📦 Existing Files Detected${NC}"
+    echo
+    echo "This directory has files but no .project/PROJECT.md"
+    echo "  Files: $file_count"
+    echo "  Directories: $dir_count"
+    echo
+    echo "I can help Claude:"
+    echo "  1) Analyze existing code and create PROJECT.md"
+    echo "  2) Start fresh (existing files stay, but treated as new project)"
+    echo "  3) Just chat with Claude (no setup)"
+    echo
+    read -p "Choose (1/2/3): " choice
+    echo
+
+    case "$choice" in
+        1)
+            echo "Launching Claude Code to analyze your project..."
+            echo
+            sleep 1
+            claude-code "Analyze the files in this directory and create a .project/PROJECT.md file with project context. Include: project overview, technology stack, architecture, and key components. Follow the git commit guidelines: no AI attribution in commits."
+            ;;
+        2)
+            echo "Launching Claude Code to set up fresh project..."
+            echo
+            sleep 1
+            claude-code "Read $MASTER_TEMPLATE then start a new project. Note: there are existing files in this directory - incorporate them into the new structure."
+            ;;
+        3)
+            echo "Launching Claude Code..."
+            echo
+            sleep 1
+            claude-code
+            ;;
+        *)
+            echo "Invalid choice. Launching Claude Code normally..."
+            echo
+            sleep 1
+            claude-code
+            ;;
+    esac
+fi

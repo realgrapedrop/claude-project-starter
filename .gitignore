@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+.directory
+
+# Temporary files
+*.swp
+*.swo
+*~
+
+# Local testing
+test-project/
+scratch/
+
+# User-specific IDE settings
+.vscode/
+.idea/
