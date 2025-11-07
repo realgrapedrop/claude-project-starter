@@ -40,7 +40,7 @@ source ~/.bashrc  # or ~/.zshrc
 # Create a new project
 mkdir my-awesome-app
 cd my-awesome-app
-project-init
+claude-project-init
 ```
 
 That's it! Claude will guide you through the rest.
@@ -53,21 +53,21 @@ That's it! Claude will guide you through the rest.
 ```bash
 mkdir new-project
 cd new-project
-project-init
+claude-project-init
 ```
 → Claude asks questions and creates full project structure
 
 **2. Existing Code (No Setup)**
 ```bash
 cd existing-project  # has code but no .project/
-project-init
+claude-project-init
 ```
 → Claude analyzes your code and creates PROJECT.md with context
 
 **3. Initialized Project**
 ```bash
 cd my-project  # has .project/PROJECT.md
-project-init
+claude-project-init
 ```
 → Claude loads context and asks what you want to work on
 
@@ -93,7 +93,7 @@ your-project/
 ```bash
 $ mkdir weather-cli
 $ cd weather-cli
-$ project-init
+$ claude-project-init
 
 ╔══════════════════════════════════════════════════════════╗
 ║          Claude Project Starter                          ║
@@ -189,7 +189,7 @@ cd claude-project-starter
 
 # Test locally
 ./install.sh
-project-init
+claude-project-init
 ```
 
 ## 💡 Tips & Tricks
@@ -212,7 +212,7 @@ Then tell Claude:
 Already have a project? Add PROJECT.md:
 ```bash
 cd existing-project
-project-init
+claude-project-init
 # Choose option 1: Analyze existing code
 ```
 

@@ -32,7 +32,7 @@ Stop manually setting up projects and creating context files. This tool automati
 
 ### Project Detection Logic
 
-The `project-init` script uses three-way detection:
+The `claude-project-init` script uses three-way detection:
 
 **Scenario 1: Empty Directory**
 - No files or directories detected
@@ -65,7 +65,7 @@ The `project-init` script uses three-way detection:
 
 ## Key Components
 
-### `/bin/project-init`
+### `/bin/claude-project-init`
 - Main executable script
 - Detects directory state
 - Launches Claude Code with appropriate prompts
@@ -74,7 +74,7 @@ The `project-init` script uses three-way detection:
 ### `/install.sh`
 - Installation script
 - Creates directories
-- Copies files
+- Copies files to `~/.local/bin/claude-project-init`
 - Manages PATH configuration
 - Interactive with colored output
 
@@ -99,7 +99,7 @@ claude-project-starter/
 ├── .project/
 │   └── PROJECT.md              # Project context (this file)
 ├── bin/
-│   └── project-init            # Main initialization script
+│   └── claude-project-init     # Main initialization script
 ├── templates/
 │   └── claude-code-project-setup-master.md  # Master template
 ├── docs/                       # Future documentation
@@ -122,7 +122,7 @@ source ~/.bashrc
 # Use
 mkdir my-project
 cd my-project
-project-init
+claude-project-init
 ```
 
 ### For Development
@@ -136,7 +136,7 @@ cd ~/projects/claude-project-starter
 # Test locally
 ./install.sh
 cd /tmp/test-project
-project-init
+claude-project-init
 ```
 
 ## Git Commit Guidelines
@@ -218,12 +218,12 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 - ✅ Directory structure created
 - ✅ install.sh script complete
 - ✅ uninstall.sh script complete
-- ✅ bin/project-init script complete
+- ✅ bin/claude-project-init script complete
 - ✅ Master template copied
 - ✅ README.md documentation complete
 - ✅ .gitignore created
-- ⏳ Git repository initialized (main branch)
-- ⏳ Initial commit pending
+- ✅ Git repository initialized (master branch)
+- ✅ Initial commit created
 - ⏳ GitHub repository creation pending
 - ⏳ Testing pending
 

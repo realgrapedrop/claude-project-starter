@@ -57,13 +57,13 @@ else
     echo -e "${YELLOW}⚠${NC} Master template not found, will be created on first use"
 fi
 
-# Copy project-init script
-if [ -f "$SCRIPT_DIR/bin/project-init" ]; then
-    cp "$SCRIPT_DIR/bin/project-init" "$BIN_DIR/"
-    chmod +x "$BIN_DIR/project-init"
-    echo -e "${GREEN}✓${NC} Installed project-init to $BIN_DIR"
+# Copy claude-project-init script
+if [ -f "$SCRIPT_DIR/bin/claude-project-init" ]; then
+    cp "$SCRIPT_DIR/bin/claude-project-init" "$BIN_DIR/"
+    chmod +x "$BIN_DIR/claude-project-init"
+    echo -e "${GREEN}✓${NC} Installed claude-project-init to $BIN_DIR"
 else
-    echo -e "${RED}✗ project-init script not found${NC}"
+    echo -e "${RED}✗ claude-project-init script not found${NC}"
     exit 1
 fi
 
@@ -92,7 +92,7 @@ if [[ ":$PATH:" != *":$BIN_DIR:"* ]]; then
     fi
 
     echo
-    echo -e "${YELLOW}⚠${NC} Run this to use project-init in current shell:"
+    echo -e "${YELLOW}⚠${NC} Run this to use claude-project-init in current shell:"
     echo -e "   ${BLUE}source $SHELL_RC${NC}"
 else
     echo -e "${GREEN}✓${NC} $BIN_DIR is already in PATH"
@@ -106,9 +106,9 @@ echo
 echo "Usage:"
 echo "  1. Create a project directory:   mkdir my-project"
 echo "  2. Enter the directory:          cd my-project"
-echo "  3. Initialize the project:       project-init"
+echo "  3. Initialize the project:       claude-project-init"
 echo
-echo "Or run 'project-init' in any directory to:"
+echo "Or run 'claude-project-init' in any directory to:"
 echo "  - Start a new project (if empty)"
 echo "  - Analyze existing project (if has files)"
 echo "  - Continue working (if has .project/PROJECT.md)"

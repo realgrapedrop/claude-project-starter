@@ -22,7 +22,7 @@ echo
 
 # Confirm uninstallation
 echo -e "${YELLOW}This will remove:${NC}"
-echo "  - $BIN_DIR/project-init"
+echo "  - $BIN_DIR/claude-project-init"
 echo "  - $CONFIG_DIR/ (config directory)"
 echo
 read -p "Continue with uninstallation? (yes/no): " -r
@@ -33,12 +33,12 @@ if [[ ! $REPLY =~ ^[Yy]es$ ]]; then
     exit 0
 fi
 
-# Remove project-init script
-if [ -f "$BIN_DIR/project-init" ]; then
-    rm "$BIN_DIR/project-init"
-    echo -e "${GREEN}✓${NC} Removed $BIN_DIR/project-init"
+# Remove claude-project-init script
+if [ -f "$BIN_DIR/claude-project-init" ]; then
+    rm "$BIN_DIR/claude-project-init"
+    echo -e "${GREEN}✓${NC} Removed $BIN_DIR/claude-project-init"
 else
-    echo -e "${BLUE}ℹ${NC} project-init not found (already removed?)"
+    echo -e "${BLUE}ℹ${NC} claude-project-init not found (already removed?)"
 fi
 
 # Remove config directory
