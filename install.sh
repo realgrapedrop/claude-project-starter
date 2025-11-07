@@ -17,7 +17,7 @@ BIN_DIR="${HOME}/.local/bin"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo -e "${BLUE}╔══════════════════════════════════════════════════════════╗${NC}"
-echo -e "${BLUE}║${NC}     Claude Project Starter - Installer              ${BLUE}║${NC}"
+echo -e "${BLUE}║${NC}        Claude Project Starter - Installer               ${BLUE}║${NC}"
 echo -e "${BLUE}╚══════════════════════════════════════════════════════════╝${NC}"
 echo
 
@@ -100,7 +100,7 @@ fi
 
 echo
 echo -e "${BLUE}╔══════════════════════════════════════════════════════════╗${NC}"
-echo -e "${BLUE}║${NC}     Installation Complete!                          ${BLUE}║${NC}"
+echo -e "${BLUE}║${NC}              Installation Complete!                     ${BLUE}║${NC}"
 echo -e "${BLUE}╚══════════════════════════════════════════════════════════╝${NC}"
 echo
 echo "Usage:"

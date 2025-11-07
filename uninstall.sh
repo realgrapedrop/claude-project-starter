@@ -16,7 +16,7 @@ CONFIG_DIR="${HOME}/.config/claude-code"
 BIN_DIR="${HOME}/.local/bin"
 
 echo -e "${BLUE}╔══════════════════════════════════════════════════════════╗${NC}"
-echo -e "${BLUE}║${NC}     Claude Project Starter - Uninstaller            ${BLUE}║${NC}"
+echo -e "${BLUE}║${NC}       Claude Project Starter - Uninstaller              ${BLUE}║${NC}"
 echo -e "${BLUE}╚══════════════════════════════════════════════════════════╝${NC}"
 echo
 
@@ -69,7 +69,7 @@ echo "  export PATH=\"\$HOME/.local/bin:\$PATH\""
 echo
 
 echo -e "${BLUE}╔══════════════════════════════════════════════════════════╗${NC}"
-echo -e "${BLUE}║${NC}     Uninstallation Complete!                        ${BLUE}║${NC}"
+echo -e "${BLUE}║${NC}            Uninstallation Complete!                     ${BLUE}║${NC}"
 echo -e "${BLUE}╚══════════════════════════════════════════════════════════╝${NC}"
 echo
 echo "Claude Project Starter has been removed."

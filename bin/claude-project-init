@@ -18,7 +18,7 @@ MASTER_TEMPLATE="$CONFIG_DIR/claude-code-project-setup-master.md"
 CURRENT_DIR="$(pwd)"
 
 # Check if Claude Code is installed
-if ! command -v claude-code >/dev/null 2>&1; then
+if ! command -v claude >/dev/null 2>&1; then
     echo -e "${RED}✗ Claude Code is not installed${NC}"
     echo "  Install from: https://claude.com/claude-code"
     exit 1
@@ -26,7 +26,7 @@ fi
 
 # Banner
 echo -e "${BLUE}╔══════════════════════════════════════════════════════════╗${NC}"
-echo -e "${BLUE}║${NC}          Claude Project Starter                      ${BLUE}║${NC}"
+echo -e "${BLUE}║${NC}              Claude Project Starter                     ${BLUE}║${NC}"
 echo -e "${BLUE}╚══════════════════════════════════════════════════════════╝${NC}"
 echo
 echo -e "${DIM}Current directory: $CURRENT_DIR${NC}"
@@ -116,7 +116,7 @@ if [ $file_count -eq 0 ] && [ $dir_count -eq 0 ]; then
         echo -e "${DIM}Tell Claude: 'Read $MASTER_TEMPLATE then start a new project'${NC}"
         echo
         sleep 2
-        claude-code "Read $MASTER_TEMPLATE then start a new project"
+        claude "Read $MASTER_TEMPLATE then start a new project"
     else
         echo "Cancelled."
         exit 0
@@ -137,12 +137,12 @@ elif [ "$has_project_md" = true ]; then
         echo "Launching Claude Code with project context..."
         echo
         sleep 1
-        claude-code "Read .project/PROJECT.md and understand the project context. Then: $task"
+        claude "Read .project/PROJECT.md and understand the project context. Then: $task"
     else
         echo "Launching Claude Code with project context..."
         echo
         sleep 1
-        claude-code "Read .project/PROJECT.md and understand the project context. I'm ready to work on this project."
+        claude "Read .project/PROJECT.md and understand the project context. I'm ready to work on this project."
     fi
 
 else
@@ -166,25 +166,25 @@ else
             echo "Launching Claude Code to analyze your project..."
             echo
             sleep 1
-            claude-code "Analyze the files in this directory and create a .project/PROJECT.md file with project context. Include: project overview, technology stack, architecture, and key components. Follow the git commit guidelines: no AI attribution in commits."
+            claude "Analyze the files in this directory and create a .project/PROJECT.md file with project context. Include: project overview, technology stack, architecture, and key components. Follow the git commit guidelines: no AI attribution in commits."
             ;;
         2)
             echo "Launching Claude Code to set up fresh project..."
             echo
             sleep 1
-            claude-code "Read $MASTER_TEMPLATE then start a new project. Note: there are existing files in this directory - incorporate them into the new structure."
+            claude "Read $MASTER_TEMPLATE then start a new project. Note: there are existing files in this directory - incorporate them into the new structure."
             ;;
         3)
             echo "Launching Claude Code..."
             echo
             sleep 1
-            claude-code
+            claude
             ;;
         *)
             echo "Invalid choice. Launching Claude Code normally..."
             echo
             sleep 1
-            claude-code
+            claude
             ;;
     esac
 fi
