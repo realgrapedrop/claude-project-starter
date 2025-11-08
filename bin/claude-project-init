@@ -166,7 +166,22 @@ else
             echo "Launching Claude Code to analyze your project..."
             echo
             sleep 1
-            claude "Analyze the files in this directory and create a .project/PROJECT.md file with project context. Include: project overview, technology stack, architecture, and key components. Follow the git commit guidelines: no AI attribution in commits."
+            claude "Analyze the files in this directory and create a .project/PROJECT.md file with project context. Include:
+
+1. Project Overview - What this project does
+2. Technology Stack - Languages, frameworks, databases used
+3. Architecture - Key components and how they work together
+4. Project Structure - Folder and file organization
+5. Current Status - What's implemented, what's pending
+
+IMPORTANT: Include a 'Git Commit Guidelines' section with:
+- Use conventional commits (feat:, fix:, docs:, refactor:, test:, chore:)
+- **CRITICAL**: DO NOT include AI attribution in commits
+- NO 'Co-Authored-By: Claude' or AI tool references
+- All commits attributed to project owner only
+- Keep git history clean and professional
+
+Make the PROJECT.md comprehensive and useful for future development sessions."
             ;;
         2)
             echo "Launching Claude Code to set up fresh project..."
