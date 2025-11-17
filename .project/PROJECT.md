@@ -213,6 +213,93 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 - Initialized project: Just need task direction
 - Covers all common use cases
 
+---
+
+## 📚 Documentation Methodology
+
+**Apply this methodology to all projects created with this starter template.**
+
+### Public Documentation Structure
+
+Follow this proven three-tier organization for all user-facing documentation:
+
+**Tier 1: Essential Guides** (Most frequently accessed)
+- FAQ - Common questions and troubleshooting
+- Quick Start - Get up and running fast
+- Comparison Guides - vs alternatives/previous versions
+- User-focused customization guides
+
+**Tier 2: Configuration & Deployment** (Setup and installation)
+- Complete installation guides
+- Configuration references
+- Deployment scenarios (Docker, native, cloud, etc.)
+- Architecture overview
+- Integration guides
+
+**Tier 3: Operations & Maintenance** (Day-to-day tasks)
+- Backup and restore procedures
+- Upgrade guides
+- Alert/monitoring configuration
+- Performance tuning
+- Troubleshooting workflows
+
+**Tier 4: Reference** (Deep technical documentation)
+- API/metrics complete reference
+- Changelog and release notes
+- Technical specifications
+- Developer guides (if open for contributions)
+
+### Anti-Redundancy Principles
+
+1. **README.md as Hub** - Keep README concise with highlights, reference deeper docs
+2. **Single Source of Truth** - Each topic gets ONE authoritative document
+3. **No Duplicate Content** - Cross-reference instead of copying
+4. **Flat Structure** - Avoid nested folders (use `/docs/` root, not `/docs/category/subcategory/`)
+5. **Every Doc Referenced** - If it's public-facing, link it from README.md
+6. **Archive Planning Docs** - Move research/planning docs to `/docs/research/` or `/docs/dev/`
+
+### Documentation Checklist
+
+- [ ] README.md references every public doc in logical sections
+- [ ] No redundant content between docs
+- [ ] All docs in flat `/docs/` structure (no subfolders except `/docs/dev/` and `/docs/research/`)
+- [ ] FAQ summarizes and cross-references (doesn't duplicate)
+- [ ] Installation guides don't duplicate prerequisites
+- [ ] Comparison docs don't duplicate feature descriptions
+- [ ] Each doc has clear, unique purpose
+
+### Example README.md Structure
+
+```markdown
+## Documentation
+
+### Essential Guides
+- [FAQ](docs/FAQ.md) - Frequently asked questions
+- [Quick Start](docs/QUICK_START.md) - 5-minute setup
+
+### Configuration & Deployment
+- [Installation Guide](docs/INSTALLATION.md) - Complete setup
+- [Configuration Reference](docs/CONFIG.md) - All options
+- [Architecture](docs/ARCHITECTURE.md) - System design
+
+### Operations & Maintenance
+- [Backup & Restore](docs/BACKUP.md) - Data protection
+- [Upgrades](docs/UPGRADE.md) - Version updates
+- [Monitoring](docs/MONITORING.md) - Health checks
+
+### Reference
+- [API Reference](docs/API.md) - Complete API docs
+- [Changelog](docs/CHANGELOG.md) - Version history
+```
+
+**Why This Matters:**
+- Reduces reader fatigue from redundant information
+- Makes documentation easier to maintain (one place to update)
+- Improves discoverability (users know where to find info)
+- Professional presentation (clean, organized structure)
+
+---
+
 ## Current Status
 
 - ✅ Directory structure created
